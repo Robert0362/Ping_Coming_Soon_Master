@@ -52,20 +52,30 @@ main{
     padding:1rem 6.5rem;
     margin:1rem;
     border:1px solid var(--blue);
-    box-shadow: 5px 5px;
+    box-shadow: -5px 5px 5px var(--paleBlue);
 }
 
 ::placeholder{
     color: var(--paleBlue);
     
 }
+
+.errorMsg{
+    font-size: x-small;
+    color:var(--lightRed);
+}
+
 .notify{
     border-radius: 1.5rem;
     background-color: var(--blue);
     padding:1.1rem 9.95rem;
     color: #fff;
     border:0;
-    box-shadow: 5px 5px;
+    box-shadow: -5px 5px 5px var(--paleBlue);
+}
+
+.notify:hover{
+    background-color: var(--paleBlue);
 }
 
 .mainImage{
@@ -94,11 +104,19 @@ footer{
     margin: .5rem;
 }
 
+.fa-facebook:hover{
+    background-color: var(--paleBlue);;
+}
+
 .fa-twitter{
     border-radius: 50%;
     border: 1px solid var(--blue);
     padding: .5rem;
     margin: .5rem;
+}
+
+.fa-twitter:hover{
+    background-color: var(--paleBlue);;
 }
 
 .fa-instagram{
@@ -108,13 +126,17 @@ footer{
     margin: .5rem;
 }
 
+.fa-instagram:hover{
+    background-color: var(--paleBlue);
+}
+
 .copy{
     font-size: 12px;
 }
 
 @media screen and (min-width: 1000px) {
     .container {
-        margin:1rem 25rem
+        margin:1rem 20rem
     }
     .subHeader{
         font-size: 48px;
@@ -127,19 +149,39 @@ footer{
     }
 
     main{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
+        display: grid;
+        align-content: center;
+        grid-template-columns: 75% 25%;
+        grid-template-rows: 20% 5% 75%;
+        grid-template-areas:
+        "email notify"
+        "error ."
+        "image image";
     }
+
     .email{
-        flex-grow: 2;
         padding:1.25rem 6.5rem;
         border-radius: 1.75;
+        grid-area: email;
     }
     .notify{
-        padding:1.35rem 5rem;
+        padding:1.35rem 5rem 1.35rem 5rem;
         border-radius: 1.75rem;
+        grid-area: notify;
+    }
+
+    .errorMsg{
+        font-size: 16px;
+        color:var(--lightRed);
+        padding-left: 5rem;
+        grid-area: error; 
+        justify-self: start;
+        align-self: start;
+        margin:0;
+    }
+
+    .mainImage{
+        grid-area: image;
     }
   }
 
